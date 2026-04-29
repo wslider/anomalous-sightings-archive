@@ -16,7 +16,7 @@ df["rounded_lat"] = df["latitude"].where((df["country"].str.lower() == "us") & (
 
 count = df["rounded_lat"].value_counts().sort_index()
 
-mean_latitude = df["latitude"].where((df["country"].str.lower() == "us") & (df["latitude"].between(24, 50))).mean()
+mean_latitude = df["latitude"].where((df["country"].str.lower() == "us") & (df["latitude"].between(24, 50))).mean().round(2)
 
 louisville_latitude = 38.25
 
@@ -42,7 +42,7 @@ ax.axvline(
 ax.text(
     mean_latitude +0.2, 
     7000,
-    "← Average Latitude of Sightings",
+    f"← Average Latitude of Sightings\n   {mean_latitude}° N",
     color = "#3a3b45"
 )
 
@@ -55,7 +55,7 @@ ax.axvline(
 ax.text(
     louisville_latitude -5.7, 
     7000,
-    "Latitude of Louisville, KY →",
+    f"Latitude of Louisville, KY →\n{louisville_latitude}° N",
     color = "#006c0e",
 )
 
