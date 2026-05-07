@@ -28,13 +28,14 @@ sighting_wx_df["hour_num"] = pd.to_numeric(sighting_wx_df['hour_str'])
 
 plt.figure(figsize=(9,6))
 plt.hist(sighting_wx_df['hour_num'].dropna(), 
-         bins=27,                    
+         bins=24,                    
          color="#170141", 
          alpha=0.8)
 
 plt.xlabel("Time of Day / Night (24 Hours)")
 plt.ylabel("Number of Sightings")
-plt.title("Sightings Peak at Around 10PM", fontsize=18, pad=18)
+plt.title("UFO Sightings Peak at Around 10PM", fontsize=18, pad=18)
+plt.xlim(0, 23)
 
 ax = plt.gca()
 ax.spines['top'].set_visible(False)
