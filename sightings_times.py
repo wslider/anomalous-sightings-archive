@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv("complete.csv", usecols=range(0, 11))
+df = pd.read_csv("data/complete.csv", usecols=range(0, 11))
 df.info()
 
 df['datetime'] = pd.to_datetime(df['datetime'].astype(str), errors='coerce')
