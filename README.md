@@ -1,4 +1,4 @@
-# Anomolous Sightings Archive
+# Anomolous Sightings Archive 🛸
  
 This project explores a NUFORC ( National UFO Reporting Center ) Dataset previously found on Kaggle. The original CSV file can be found at data/complete.csv and contains almost 90K entries.  
  
@@ -18,6 +18,9 @@ The analysis focuses mainly on US sightings / reports and shows the following th
 ## Data Sources
 - Original CSV File found at 'data/complete.csv'
 - CSV file with additional columns for weather data from Weather API at 'data/sighting_with_weather_v2.csv'
+
+## API Use
+- Weather API: Visit "https://www.weatherapi.com/" to obtain a free key. Store your key in a .env file with the variable "WX_API_KEY". 
  
 ## Author
 William Slider – Data Analyst
