@@ -20,8 +20,11 @@ The analysis focuses mainly on US sightings / reports and shows the following th
 - CSV file with additional columns for weather data from Weather API at 'data/sighting_with_weather_v2.csv'
 - US population Data 'https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data'
 
+- Bigfoot Research Organization Database https://www.kaggle.com/datasets/thedevastator/unlocking-mysteries-of-bigfoot-through-sightings?select=bfro_reports.csv
+
 ## API Use
 - Weather API: Visit "https://www.weatherapi.com/" to obtain a free key. Store your key in a .env file with the variable "WX_API_KEY". 
+
  
 ## Author
 William Slider – Data Analyst
