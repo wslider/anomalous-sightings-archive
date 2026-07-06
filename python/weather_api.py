@@ -6,10 +6,15 @@
 # pip install requests-cache retry-requests numpy pandas
 
 import openmeteo_requests
-
 import pandas as pd
 import requests_cache
 from retry_requests import retry
+
+
+
+
+
+# look at previous weather api call 
 
 # Setup the Open-Meteo API client with cache and retry on error
 cache_session = requests_cache.CachedSession('.cache', expire_after = -1)
@@ -64,4 +69,4 @@ hourly_data["cloud_cover"] = hourly_cloud_cover
 hourly_data["wind_speed_10m"] = hourly_wind_speed_10m
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
-print("\nHourly data\n", hourly_dataframe)
+print("\nHourly data\n", hourly_dataframe) 
