@@ -25,6 +25,8 @@ The analysis focuses mainly on US sightings / reports and shows the following th
 ## API Use
 - Weather API: Visit "https://www.weatherapi.com/" to obtain a free key. Store your key in a .env file with the variable "WX_API_KEY". 
 
+## AI Use 
+
  
 ## Author
 William Slider – Data Analyst
