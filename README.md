@@ -1,6 +1,6 @@
 # Anomolous Sightings Archive 🛸
  
-This project explores a NUFORC ( National UFO Reporting Center ) Dataset previously found on Kaggle. The original CSV file can be found at data/complete.csv and contains almost 90K entries.  
+This project explores a NUFORC ( National UFO Reporting Center ) Dataset previously found on Kaggle. The original CSV file can be found at data/uap_original_dataset.csv and contains almost 90K entries.  
  
 ## How to Use
 1. Clone this repository.
@@ -16,7 +16,7 @@ The analysis focuses mainly on US sightings / reports and shows the following th
 - Average Temperature at the Time of Sightings is ~ 57 F 
  
 ## Data Sources
-- Original CSV File found at 'data/complete.csv'
+- Original CSV File found at 'data/uap_original_dataset.csv'
 - CSV file with additional columns for weather data from Weather API at 'data/sighting_with_weather_v2.csv'
 - US population Data 'https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data'
 
