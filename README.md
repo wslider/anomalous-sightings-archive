@@ -81,6 +81,8 @@ The analysis focuses mainly on US sightings / reports and shows the following th
 - Weather API: Visit "https://www.weatherapi.com/" to obtain a free key. Store your key in a .env file with the variable "WX_API_KEY". 
 
 ## AI Use 
+
+- python/geo_location.py: create_geohashes + haversine_distance functions (Grok 4)
  
 ## Author
 William Slider – Data Analyst
