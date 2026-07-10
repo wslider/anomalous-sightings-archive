@@ -1,25 +1,25 @@
 # Anomolous Sightings Archive 🛸
  
-This project explores a NUFORC ( National UFO Reporting Center ) Dataset previously found on Kaggle. The original CSV file can be found at data/uap_original_dataset.csv and contains almost 90K entries.  
+This project investigates potential correlations between Bigfoot and UFO sightings across the United States from 1950 to 2014. The primary goal is to determine whether there is a meaningful relationship in the time and/or location of these anomalous phenomena. Secondary goals include identifying shared environmental conditions (season, weather, kp index, etc.) and providing practical insights for anyone seeking to increase their chances of encountering the phenomena on their own.
  
+
 ## How to Use
 1. Clone this repository.
 2. Install the required Python packages:  
    pip install -r requirements.txt
-3. Open `complete_analysis.ipynb` in Jupyter Notebook or JupyterLab.
+3. Open `complete_analysis_combined.ipynb` in Jupyter Notebook or JupyterLab.
  
 ## Example Output
-The analysis focuses mainly on US sightings / reports and shows the following through charts found in 'plots/': 
+The initial analysis focused on a subset of US UAP sightings / reports from 2010- 2014 and shows the following through charts found in 'plots/': 
 - UFO sighting frequency peaks between 9:00 PM - 10:00 PM
 - UFO sighting frequency peaks in the Summer and Early Fall Months
 - Majority of sightings occur with Clear Skies
 - Average Temperature at the Time of Sightings is ~ 57 F 
  
 ## Data Sources
-- Original CSV File found at 'data/uap_original_dataset.csv'
-- CSV file with additional columns for weather data from Weather API at 'data/sighting_with_weather_v2.csv'
+- Original CSV File found at 'data/uap_original_dataset.csv' (currently unavailable on Kaggle)
+- CSV file with additional columns for weather data (only for 2010 - 2014 US sightings) Weather API at 'data/sighting_with_weather_v2.csv'
 - US population Data 'https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data'
-
 - Bigfoot Research Organization Database https://www.kaggle.com/datasets/thedevastator/unlocking-mysteries-of-bigfoot-through-sightings?select=bfro_reports.csv
 
 
@@ -82,7 +82,14 @@ The analysis focuses mainly on US sightings / reports and shows the following th
 
 ## AI Use 
 
-- python/geo_location.py: create_geohashes + haversine_distance functions (Grok 4)
+- us_uap_2010_2014_with_weather_analysis_v1.ipynb : assistance in creating and parsing weather api request for 2010 - 2014 UAP sighting weather data (Grok 4)
+- us_uap_2010_2014_with_weather_analysis_v2.ipynb : creation of UAP state chloropleth map (Grok 4)
+- state_populpation.ipynb : generating state_to_code dictionary to save time (Grok 4)
+- us_uap_1940_2014_v1.ipynb : fixing issue with entries of 24:00 in formating datetime column (Grok 4)
+- python/kp_index.py : assistance in parsing datetime column (Grok 4)
+- python/geo_location.py : create_geohashes + haversine_distance functions (Grok 4)
+
+
  
 ## Author
 William Slider – Data Analyst
