@@ -32,7 +32,7 @@ def update_kp_data():
         df['hour_start'].astype(str).str.replace('.0', ':00', regex=False)
     )
 
-    output_path = Path("../data/kp_index.csv")
+    output_path = Path("../data/processed/kp_index.csv")
     df.to_csv(output_path, index=False)
 
     print(df.head())

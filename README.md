@@ -17,8 +17,8 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 - Average Temperature at the Time of Sightings is ~ 57 F 
  
 ## Data Sources
-- Original CSV File found at 'data/uap_original_dataset.csv' (currently unavailable on Kaggle)
-- CSV file with additional columns for weather data (only for 2010 - 2014 US sightings) Weather API at 'data/sighting_with_weather_v2.csv'
+- Original CSV File found at 'data/raw/uap_original_dataset.csv' (currently unavailable on Kaggle)
+- CSV file with additional columns for weather data (only for 2010 - 2014 US sightings) Weather API at 'data/processed/sighting_with_weather_v2.csv'
 - US population Data 'https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data'
 - Bigfoot Research Organization Database https://www.kaggle.com/datasets/thedevastator/unlocking-mysteries-of-bigfoot-through-sightings?select=bfro_reports.csv
 
