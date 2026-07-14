@@ -4,12 +4,14 @@ This project investigates potential correlations between Bigfoot and UFO sightin
  
 
 ## How to Use
+
 1. Clone this repository.
 2. Install the required Python packages:  
    pip install -r requirements.txt
 3. Open `complete_analysis_combined.ipynb` in Jupyter Notebook or JupyterLab.
  
 ## Example Output
+
 The initial analysis focused on a subset of US UAP sightings / reports from 2010- 2014 and shows the following through charts found in 'plots/': 
 - UFO sighting frequency peaks between 9:00 PM - 10:00 PM
 - UFO sighting frequency peaks in the Summer and Early Fall Months
@@ -17,6 +19,7 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 - Average Temperature at the Time of Sightings is ~ 57 F 
  
 ## Data Sources
+
 - Original CSV File found at 'data/raw/uap_original_dataset.csv' (currently unavailable on Kaggle)
 - CSV file with additional columns for weather data (only for 2010 - 2014 US sightings) Weather API at 'data/processed/sighting_with_weather_v2.csv'
 - US population Data 'https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data'
@@ -24,9 +27,11 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 
 
 ## Workflow Overview  
+
 **Anomalous Sightings Archive Project**
 
 ### Tools & Environment
+
 - **Version Control**: GitHub
 - **IDE**: VS Code
 - **Primary Development**: Jupyter Notebooks (data wrangling, database creation, and visualizations)
@@ -78,21 +83,25 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 
 
 ## API Use
+
 - Weather API: Visit "https://www.weatherapi.com/" to obtain a free key. Store your key in a .env file with the variable "WX_API_KEY". 
 
 ## AI Use 
 
-- us_uap_2010_2014_with_weather_analysis_v1.ipynb : assistance in creating and parsing weather api request for 2010 - 2014 UAP sighting weather data (Grok 4)
-- us_uap_2010_2014_with_weather_analysis_v2.ipynb : creation of UAP state chloropleth map (Grok 4)
-- state_populpation.ipynb : generating state_to_code dictionary to save time (Grok 4)
-- us_uap_1940_2014_v1.ipynb : fixing issue with entries of 24:00 in formating datetime column (Grok 4)
+- notebooks/us_uap_2010_2014_with_weather_analysis_v1.ipynb : assistance in creating and parsing weather api request for 2010 - 2014 UAP sighting weather data (Grok 4)
+- notebooks/us_uap_2010_2014_with_weather_analysis_v2.ipynb : creation of UAP state chloropleth map (Grok 4)
+- notebooks/state_populpation.ipynb : generating state_to_code dictionary to save time (Grok 4)
+- notebooks/us_uap_1940_2014_v1.ipynb : fixing issue with entries of 24:00 in formating datetime column (Grok 4)
 - python/kp_index.py : assistance in parsing datetime column (Grok 4)
 - python/geo_location.py : create_geohashes + haversine_distance functions (Grok 4)
+- notebooks/sql_database.ipynb: setting up primary keys for tables within connection.execute() (Grok 4)
 
 
  
 ## Author
+
 William Slider – Data Analyst
  
 ## License
+
 MIT License

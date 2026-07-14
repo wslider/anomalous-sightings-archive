@@ -1,52 +1,52 @@
-,state_code,state,2010_population
-0,AK,Alaska,710231.0
-1,AL,Alabama,4785514.0
-2,AR,Arkansas,2921998.0
-3,AZ,Arizona,6407342.0
-4,CA,California,37319550.0
-5,CO,Colorado,5047539.0
-6,CT,Connecticut,3579173.0
-7,DC,District of Columbia,605282.0
-8,DE,Delaware,899647.0
-9,FL,Florida,18846143.0
-10,GA,Georgia,9712209.0
-11,HI,Hawaii,1364004.0
-12,IA,Iowa,3050819.0
-13,ID,Idaho,1570819.0
-14,IL,Illinois,12840545.0
-15,IN,Indiana,6490555.0
-16,KS,Kansas,2858266.0
-17,KY,Kentucky,4348464.0
-18,LA,Louisiana,4544635.0
-19,MA,Massachusetts,6566440.0
-20,MD,Maryland,5788784.0
-21,ME,Maine,1327651.0
-22,MI,Michigan,9877597.0
-23,MN,Minnesota,5310934.0
-24,MO,Missouri,5996089.0
-25,MS,Mississippi,2970615.0
-26,MT,Montana,990730.0
-27,NC,North Carolina,9574586.0
-28,ND,North Dakota,674752.0
-29,NE,Nebraska,1829591.0
-30,NH,New Hampshire,1316807.0
-31,NJ,New Jersey,8799451.0
-32,NM,New Mexico,2064614.0
-33,NV,Nevada,2702483.0
-34,NY,New York,19399956.0
-35,OH,Ohio,11539449.0
-36,OK,Oklahoma,3760014.0
-37,OR,Oregon,3837614.0
-38,PA,Pennsylvania,12711406.0
-39,RI,Rhode Island,1053994.0
-40,SC,South Carolina,4635846.0
-41,SD,South Dakota,816193.0
-42,TN,Tennessee,6355518.0
-43,TX,Texas,25241897.0
-44,UT,Utah,2775413.0
-45,VA,Virginia,8024004.0
-46,VT,Vermont,625886.0
-47,WA,Washington,6743009.0
-48,WI,Wisconsin,5690538.0
-49,WV,West Virginia,1854265.0
-50,WY,Wyoming,564531.0
+state_code,state,2010_population
+AK,Alaska,710231.0
+AL,Alabama,4785514.0
+AR,Arkansas,2921998.0
+AZ,Arizona,6407342.0
+CA,California,37319550.0
+CO,Colorado,5047539.0
+CT,Connecticut,3579173.0
+DC,District of Columbia,605282.0
+DE,Delaware,899647.0
+FL,Florida,18846143.0
+GA,Georgia,9712209.0
+HI,Hawaii,1364004.0
+IA,Iowa,3050819.0
+ID,Idaho,1570819.0
+IL,Illinois,12840545.0
+IN,Indiana,6490555.0
+KS,Kansas,2858266.0
+KY,Kentucky,4348464.0
+LA,Louisiana,4544635.0
+MA,Massachusetts,6566440.0
+MD,Maryland,5788784.0
+ME,Maine,1327651.0
+MI,Michigan,9877597.0
+MN,Minnesota,5310934.0
+MO,Missouri,5996089.0
+MS,Mississippi,2970615.0
+MT,Montana,990730.0
+NC,North Carolina,9574586.0
+ND,North Dakota,674752.0
+NE,Nebraska,1829591.0
+NH,New Hampshire,1316807.0
+NJ,New Jersey,8799451.0
+NM,New Mexico,2064614.0
+NV,Nevada,2702483.0
+NY,New York,19399956.0
+OH,Ohio,11539449.0
+OK,Oklahoma,3760014.0
+OR,Oregon,3837614.0
+PA,Pennsylvania,12711406.0
+RI,Rhode Island,1053994.0
+SC,South Carolina,4635846.0
+SD,South Dakota,816193.0
+TN,Tennessee,6355518.0
+TX,Texas,25241897.0
+UT,Utah,2775413.0
+VA,Virginia,8024004.0
+VT,Vermont,625886.0
+WA,Washington,6743009.0
+WI,Wisconsin,5690538.0
+WV,West Virginia,1854265.0
+WY,Wyoming,564531.0
