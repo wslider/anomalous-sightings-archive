@@ -2,6 +2,9 @@ notes.md
 
 # Source: https://github.com/github/gitignore/blob/main/Python.gitignore  
 
+# Database 
+.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
