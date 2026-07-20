@@ -70,3 +70,4 @@ def get_weather_for_hour(lat: float, lon: float, date_str: str, hour: int) -> di
             "precip": None,
             "wind_mph": None,
         }
+    
