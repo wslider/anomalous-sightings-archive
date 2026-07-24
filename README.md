@@ -16,7 +16,7 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 - UFO sighting frequency peaks between 9:00 PM - 10:00 PM
 - UFO sighting frequency peaks in the Summer and Early Fall Months
 - Majority of sightings occur with Clear Skies
-- Average Temperature at the Time of Sightings is ~ 57 F 
+- Average Temperature at the Time of Sightings is ~ 57 .F 
  
 ## Data Sources
 
