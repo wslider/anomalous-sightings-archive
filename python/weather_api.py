@@ -71,7 +71,7 @@ def get_weather(lat, lon, date_str, hour=0, return_full_df=False):
         return weather
 
     except Exception as e:
-        print(f"❌ Weather API error ({lat}, {lon}, {date_str} h{hour}): {e}")
+        print(f"Weather API error ({lat}, {lon}, {date_str} h{hour}): {e}")
         default = {k: None for k in ["temperature_f", "dew_point", "cloud_cover", "precip_in", "wind_mph"]}
         if return_full_df:
             return default, pd.DataFrame()

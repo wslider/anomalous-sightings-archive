@@ -88,18 +88,22 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 
 ## AI Use 
 
-- notebooks/archive/us_uap_2010_2014_with_weather_analysis_v1.ipynb : assistance in creating and parsing weather api request for 2010 - 2014 UAP sighting weather data (Grok 4)
-   - Note: This API was used in a previous version of the project. 
-- notebooks/archive/us_uap_2010_2014_with_weather_analysis_v2.ipynb : creation of UAP state chloropleth map (Grok 4)
+### Previous Versions of Project
+   - notebooks/archive/us_uap_2010_2014_with_weather_analysis_v1.ipynb : assistance in creating and parsing weather api request for 2010 - 2014 UAP sighting weather data (Grok 4)
+      - Note: This API was used in a previous version of the project. 
+   - notebooks/archive/us_uap_2010_2014_with_weather_analysis_v2.ipynb : creation of UAP state chloropleth map (Grok 4)
 
-- notebooks/anomalous_sightings_analysis: generating state_to_code dictionary to save time (Grok 4)
-- notebooks/anomalous_sightings_analysis: fixing issue with entries of 24:00 in formating datetime column (Grok 4)
-- notebooks/ anomalous_sightings_analysis: setting up primary keys for tables within connection.execute() (Grok 4)
-- notebooks/anomalous_sightings_analysis: Weather Loop and Chechpoints in Calling Open Meteo API (Grok 4)
+### Main Workflow Notebook 
+   - notebooks/anomalous_sightings_analysis: generating state_to_code dictionary to save time (Grok 4)
+   - notebooks/anomalous_sightings_analysis: fixing issue with entries of 24:00 in formating datetime column (Grok 4)
+   - notebooks/anomalous_sightings_analysis: setting up primary keys for tables within connection.execute() (Grok 4)
+   - notebooks/anomalous_sightings_analysis: Weather Loop and Checkpoints in Calling Open Meteo API (Grok 4)
 
-- python/kp_index.py : assistance in parsing datetime column (Grok 4)
-- python/geo_location.py : create_geohashes + haversine_distance functions (Grok 4)
-
+### Python Modules and Functions 
+   - python/kp_index.py: assistance in parsing datetime column (Grok 4)
+   - python/geo_location.py: create_geohashes + haversine_distance functions (Grok 4)
+   - python/weather_api.py: exception / error handling of open meteo api (Grok 4)
+   - python/weather_api.py: recommended vectorized weather condition classification for enriching uap_2011_weather with 'weather_conditions' (Grok 4)
 
 
 ## Author
