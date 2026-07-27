@@ -51,10 +51,16 @@ Archived plots from earlier versions (2010–2014 UAP subset) are available in `
 
 ## Data Sources
 
+### Original / Raw Data
 - **UAP / UFO reports**: `data/raw/uap_original_dataset.csv` (NUFORC, originally from Kaggle – currently unavailable)
-- **UAP + weather (2010–2014)**: `data/processed/sighting_with_weather_v2.csv`
 - **US population by state**: [Kaggle – US Population by State](https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data)
 - **Bigfoot reports**: [BFRO Database on Kaggle](https://www.kaggle.com/datasets/thedevastator/unlocking-mysteries-of-bigfoot-through-sightings?select=bfro_reports.csv)
+
+### Processed Data (created by this project)
+- **Kp Index (Geomagnetic Activity)**: [GFZ Potsdam – Kp Index](https://kp.gfz.de/)
+  - Used to create `data/processed/kp_index.csv`
+- **US UAP + weather (2011)**: `data/processed/sighting_with_weather_v2.csv`
+  - Created via Open-Meteo API weather enrichment of 2011 US UAP sightings only
 
 ---
 
@@ -117,6 +123,12 @@ This project uses the free [Open-Meteo](https://open-meteo.com/) Historical Weat
 No API key is required.
 
 The weather enrichment logic lives in `python/weather_api.py`.
+
+**Current – Kp Index (GFZ)**  
+Geomagnetic Kp index data is sourced from the official [GFZ Potsdam Kp Index service](https://kp.gfz.de/).
+No API Key is required.
+
+The fetching and processing logic lives in `python/kp_index.py`.
 
 **Legacy (Previous Version – Not Required)**  
 Older notebooks used WeatherAPI.com.  
