@@ -1,135 +1,163 @@
-# Anomolous Sightings Archive 🛸
- 
-This project investigates potential correlations between Bigfoot and UFO sightings across the United States from 1950 to 2014. The primary goal is to determine whether there is a meaningful relationship in the time and/or location of these anomalous phenomena. Secondary goals include identifying shared environmental conditions (season, weather, kp index, etc.) and providing practical insights for anyone investigating the phenomena on their own.
- 
+# 🛸 Anomalous Sightings Archive 🗺️
+
+This project investigates potential correlations between Bigfoot and UFO (UAP) sightings across the United States from 1950 to 2014.  
+The primary goal is to determine whether there is a meaningful relationship in the **time** and/or **location** of these anomalous phenomena, or if any clusters exist.  
+Secondary goals include identifying shared environmental conditions (season, weather, KP index, etc.) and providing practical insights for independent investigators.
+
+---
 
 ## How to Use
 
-1. Clone this repository.
-2. Create a virtual environment on your local machine
+1. Clone this repository  
+2. Create and activate a virtual environment:
 
-3. Install the required Python packages: 
-   bash: 
+   **macOS / Linux**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+   **Windows (PowerShell)**
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
+
+3. Install the required packages:
+   ```bash
    pip install -r requirements.txt
-4. Open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab.
- 
+   ```
+4. Open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab and run the cells.
+
+> All key charts and maps are saved in the `plots/` directory (see below).
+
+---
+
 ## Example Output
 
+Key visualizations from the current analysis:
+
+| Visualization | File |
+|---------------|------|
+| Histogram of temperatures at UAP & Bigfoot sightings | [`plots/bigfoot_uap_temperatures_histogram.png`](plots/bigfoot_uap_temperatures_histogram.png) |
+| Cloud cover distribution across all reports | [`plots/cloud_cover_distribution_all_reports_bar.png`](plots/cloud_cover_distribution_all_reports_bar.png) |
+| KP Index distribution (Historical vs Bigfoot vs UAP) | [`plots/kp_index_distribution_all_reports_bar_v2.png`](plots/kp_index_distribution_all_reports_bar_v2.png) |
+| Choropleth maps (sightings & proximity per million population) | `plots/` |
+| Cluster / density / proximity maps | `plots/` |
+
+Archived plots from earlier versions (2010–2014 UAP subset) are available in `plots/archive/`.
+
+---
 
 ## Data Sources
 
-- Original CSV File found at 'data/raw/uap_original_dataset.csv' (currently unavailable on Kaggle)
-- CSV file with additional columns for weather data (only for 2010 - 2014 US sightings) Weather API at 'data/processed/sighting_with_weather_v2.csv'
-- US population Data 'https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data'
-- Bigfoot Research Organization Database https://www.kaggle.com/datasets/thedevastator/unlocking-mysteries-of-bigfoot-through-sightings?select=bfro_reports.csv
+- **UAP / UFO reports**: `data/raw/uap_original_dataset.csv` (NUFORC, originally from Kaggle – currently unavailable)
+- **UAP + weather (2010–2014)**: `data/processed/sighting_with_weather_v2.csv`
+- **US population by state**: [Kaggle – US Population by State](https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data)
+- **Bigfoot reports**: [BFRO Database on Kaggle](https://www.kaggle.com/datasets/thedevastator/unlocking-mysteries-of-bigfoot-through-sightings?select=bfro_reports.csv)
 
+---
 
-## Workflow Overview  
-
-**Anomalous Sightings Archive Project**
+## Project Workflow
 
 ### Tools & Environment
+- **Version Control**: GitHub  
+- **IDE**: VS Code  
+- **Primary Development**: Jupyter Notebooks  
+- **Main Notebook**: `notebooks/anomalous_sightings_analysis.ipynb`  
+- **Modular Python scripts** (`python/`):
+  - Weather API integration (Open-Meteo)
+  - KP Index fetching & CSV generation
+  - Geohash generation + haversine distance
+  - Proximity table computation
 
-- **Version Control**: GitHub
-- **IDE**: VS Code
-- **Primary Development**: Jupyter Notebooks (data wrangling, database creation, and visualizations)
-- **Main Workflow**: `notebooks/anomalous_sightings_analysis.ipynb`
-- **Modular Python Scripts** (in `python/`):
-    - Weather API integration
-    - KP Index API fetching and CSV generation
-    - Geohash generation from latitude/longitude
-    - Proximity table computation and distance enrichment
-
-### Project Workflow
+### Step-by-step Process
 
 1. **Data Ingestion**  
-   Load original datasets into the `data/` directory:  
-   - Bigfoot reports (2 BFRO datasets from Kaggle)  
-   - UAP reports (NUFORC dataset from Kaggle)  
-   - US Census 2010 state population data  
-   - Generate `kp_index.csv` via dedicated API script
+   Load Bigfoot (BFRO), UAP (NUFORC), US Census population data, and generate `kp_index.csv`.
 
 2. **Data Cleaning** (Pandas)  
-   - Standard cleaning and normalization  
-   - Merge the two Bigfoot datasets into `combined_bigfoot.csv`  
-   - Save cleaned DataFrames as CSVs for backup and reproducibility
+   Standard cleaning, normalization, and merging of the two Bigfoot datasets into `combined_bigfoot.csv`.
 
 3. **Data Enrichment** (Pandas)  
-   - Add solar KP Index and AP Index to relevant DataFrames  
-   - Apply historical weather data (2010–2014 UAP reports) using `weather_api.py`  
-     *(Full UAP dataset spans 1940–2014; Bigfoot data already contains weather)*  
-   - Create proximity table by merging UAP and Bigfoot records on `geohash_7`  
-   - Reorder columns to align with the Entity Relationship Diagram (ERD)
+   - Add solar KP / AP Index  
+   - Historical weather (2010–2014 UAP) via `weather_api.py` (Open-Meteo)  
+   - Create proximity table by merging on `geohash_7`  
+   - Reorder columns to match the ERD
 
-4. **Relational Database Creation** (SQLite)  
-   Build the database with the following tables:  
+4. **Relational Database** (SQLite)  
+   Tables:
    - `bigfoot_reports` (PK: `bf_id`)
    - `bigfoot_weather`
    - `uap_reports` (PK: `uap_id`)
-   - `us_uap_2011_weather` 
-   - `states` (PK: `state_code`)  
-   - `proximity` (composite PK: `bf_id` + `uap_id`)  
+   - `us_uap_2011_weather`
+   - `states` (PK: `state_code`)
+   - `proximity` (composite PK: `bf_id` + `uap_id`)
    - `kp_index` (PK: `datetime`)
 
 5. **Analysis**  
-   Execute SQL queries against the SQLite database to generate insights for visualization.
+   SQL queries against the SQLite database to generate insights.
 
 6. **Visualizations**  
    - Charts: Matplotlib + Seaborn  
-   - Maps: GeoPandas + Folium
-      ### Plots and Maps - from current version of project (`plots/`)
-      - Histogram of UAP and Bigfoot Sightings Temperatures : `plots/bigfoot_uap_temperatures_histogram.png`
-      - Bar Chart of Cloud Cover and Sighting Distribution : `plots/cloud_cover_distribution_all_reports_bar.png`
-      - Bar Chart of KP Index Distrubution across all Sightings: `plots/kp_index_distribution_all_reports_bar_v2.png`
-      - Chloropleth Maps of US States with Proximmity, Bigfoot, UAP Counts Per Million Population
-      - Cluster / Dot / Bubble Maps Showing US Sighting Clusters, Proximity Sightings, and Desity
-
-
-      ### Achived Plots and Maps - from previous versions of project (`plots/archive`)
-      The initial analysis focused on a subset of US UAP sightings / reports from 2010- 2014 and shows the following through charts found in 'plots/': 
-      - UFO sighting frequency peaks between 9:00 PM - 10:00 PM
-      - UFO sighting frequency peaks in the Summer and Early Fall Months
-      - Majority of sightings occur with Clear Skies
-      - Average Temperature at the Time of Sightings is ~ 57 .F 
-      - Choloropleth Map showing States and UAP Sightings Per Million 
-
- 
+   - Maps: GeoPandas + Folium  
 
 7. **Front-End & Stretch Goals**  
-   - Interactive dashboard using **Streamlit** (primary option) or a static site  
-   - User experience submission form (Python script / Streamlit page)
+   - Interactive Streamlit dashboard  
+   - User sighting submission form
 
+---
 
 ## API Use
 
-- Weather API: Visit "https://www.weatherapi.com/" to obtain a free key. Store your key in a .env file with the variable "WX_API_KEY". 
+**Current – Open-Meteo**  
+This project uses the free [Open-Meteo](https://open-meteo.com/) Historical Weather API.  
+No API key is required.
 
-## AI Use 
+The weather enrichment logic lives in `python/weather_api.py`.
 
-### Previous Versions of Project ( notebooks/archive/ )
-   - notebooks/archive/us_uap_2010_2014_with_weather_analysis_v1.ipynb : assistance in creating and parsing weather api request for 2010 - 2014 UAP sighting weather data (Grok 4)
-      - Note: This API was used in a previous version of the project. 
-   - notebooks/archive/us_uap_2010_2014_with_weather_analysis_v2.ipynb : creation of UAP state chloropleth map (Grok 4)
+**Legacy (Previous Version – Not Required)**  
+Older notebooks used WeatherAPI.com.  
+If you want to re-run those archived notebooks:
+1. Get a free key at [https://www.weatherapi.com/](https://www.weatherapi.com/)
+2. Store it in a `.env` file:
+   ```
+   WX_API_KEY=your_key_here
+   ```
 
-### Main Workflow Notebook ( notebooks/anomalous_sightings_analysis.ipynb )
-   - Generating state_to_code dictionary to save time (Grok 4)
-   - Fixing issue with entries of 24:00 in formating datetime column (Grok 4)
-   - Setting up primary keys for tables within connection.execute() (Grok 4)
-   - Weather Loop and Checkpoints in Calling Open Meteo API (Grok 4)
-   - Select Case in cloud_cover_query CTE (Grok 4)
-   - Assistance in process and syntax for creating grouped bar chart of report distribution across cloud cover % ranges (Grok 4)
+---
 
-### Python Modules and Functions ( python/ )
-   - python/kp_index.py: assistance in parsing datetime column (Grok 4)
-   - python/geo_location.py: create_geohashes + haversine_distance functions (Grok 4)
-   - python/weather_api.py: exception / error handling of open meteo api (Grok 4)
-   - python/weather_api.py: recommended vectorized weather condition classification for enriching uap_2011_weather with 'weather_conditions' (Grok 4)
+## AI Assistance
 
+### Archived Notebooks (`notebooks/archive/`)
+- Weather API request parsing for 2010–2014 UAP data (Grok 4)
+- UAP state choropleth map creation (Grok 4)
+
+### Main Notebook (`notebooks/anomalous_sightings_analysis.ipynb`)
+- `state_to_code` dictionary generation (Grok 4)
+- Handling of `24:00` datetime edge cases (Grok 4)
+- Primary key setup in SQLite (Grok 4)
+- Weather API loop + checkpoints (Open-Meteo) (Grok 4)
+- Cloud cover CTE (`CASE` statement) (Grok 4)
+- Grouped bar chart of cloud cover distribution (Grok 4)
+
+### Python Modules (`python/`)
+- `kp_index.py` – datetime parsing (Grok 4)
+- `geo_location.py` – `create_geohashes` + `haversine_distance` (Grok 4)
+- `weather_api.py` – error handling + vectorized weather condition classification (Grok 4)
+
+### README.md
+- Example Output Section with Links to Plots (Grok 4)
+- Typo and Spellchecking (Grok 4)
+
+---
 
 ## Author
 
-William Slider – Data Analyst
- 
+**William Slider** – Data Analyst
+
+---
+
 ## License
 
 MIT License
