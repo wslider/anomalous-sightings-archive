@@ -1,23 +1,21 @@
 # Anomolous Sightings Archive 🛸
  
-This project investigates potential correlations between Bigfoot and UFO sightings across the United States from 1950 to 2014. The primary goal is to determine whether there is a meaningful relationship in the time and/or location of these anomalous phenomena. Secondary goals include identifying shared environmental conditions (season, weather, kp index, etc.) and providing practical insights for anyone seeking to increase their chances of encountering the phenomena on their own.
+This project investigates potential correlations between Bigfoot and UFO sightings across the United States from 1950 to 2014. The primary goal is to determine whether there is a meaningful relationship in the time and/or location of these anomalous phenomena. Secondary goals include identifying shared environmental conditions (season, weather, kp index, etc.) and providing practical insights for anyone investigating the phenomena on their own.
  
 
 ## How to Use
 
 1. Clone this repository.
-2. Install the required Python packages:  
+2. Create a virtual environment on your local machine
+
+3. Install the required Python packages: 
+   bash: 
    pip install -r requirements.txt
-3. Open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab.
+4. Open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab.
  
 ## Example Output
 
-The initial analysis focused on a subset of US UAP sightings / reports from 2010- 2014 and shows the following through charts found in 'plots/': 
-- UFO sighting frequency peaks between 9:00 PM - 10:00 PM
-- UFO sighting frequency peaks in the Summer and Early Fall Months
-- Majority of sightings occur with Clear Skies
-- Average Temperature at the Time of Sightings is ~ 57 .F 
- 
+
 ## Data Sources
 
 - Original CSV File found at 'data/raw/uap_original_dataset.csv' (currently unavailable on Kaggle)
@@ -35,6 +33,7 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 - **Version Control**: GitHub
 - **IDE**: VS Code
 - **Primary Development**: Jupyter Notebooks (data wrangling, database creation, and visualizations)
+- **Main Workflow**: `notebooks/anomalous_sightings_analysis.ipynb`
 - **Modular Python Scripts** (in `python/`):
     - Weather API integration
     - KP Index API fetching and CSV generation
@@ -64,8 +63,10 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 
 4. **Relational Database Creation** (SQLite)  
    Build the database with the following tables:  
-   - `bigfoot_reports` (PK: `bf_id`)  
-   - `uap_reports` (PK: `uap_id`)  
+   - `bigfoot_reports` (PK: `bf_id`)
+   - `bigfoot_weather`
+   - `uap_reports` (PK: `uap_id`)
+   - `us_uap_2011_weather` 
    - `states` (PK: `state_code`)  
    - `proximity` (composite PK: `bf_id` + `uap_id`)  
    - `kp_index` (PK: `datetime`)
@@ -76,6 +77,23 @@ The initial analysis focused on a subset of US UAP sightings / reports from 2010
 6. **Visualizations**  
    - Charts: Matplotlib + Seaborn  
    - Maps: GeoPandas + Folium
+      ### Plots and Maps - from current version of project (`plots/`)
+      - Histogram of UAP and Bigfoot Sightings Temperatures : `plots/bigfoot_uap_temperatures_histogram.png`
+      - Bar Chart of Cloud Cover and Sighting Distribution : `plots/cloud_cover_distribution_all_reports_bar.png`
+      - Bar Chart of KP Index Distrubution across all Sightings: `plots/kp_index_distribution_all_reports_bar_v2.png`
+      - Chloropleth Maps of US States with Proximmity, Bigfoot, UAP Counts Per Million Population
+      - Cluster / Dot / Bubble Maps Showing US Sighting Clusters, Proximity Sightings, and Desity
+
+
+      ### Achived Plots and Maps - from previous versions of project (`plots/archive`)
+      The initial analysis focused on a subset of US UAP sightings / reports from 2010- 2014 and shows the following through charts found in 'plots/': 
+      - UFO sighting frequency peaks between 9:00 PM - 10:00 PM
+      - UFO sighting frequency peaks in the Summer and Early Fall Months
+      - Majority of sightings occur with Clear Skies
+      - Average Temperature at the Time of Sightings is ~ 57 .F 
+      - Choloropleth Map showing States and UAP Sightings Per Million 
+
+ 
 
 7. **Front-End & Stretch Goals**  
    - Interactive dashboard using **Streamlit** (primary option) or a static site  
