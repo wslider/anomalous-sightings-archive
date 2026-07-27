@@ -95,6 +95,8 @@ Archived plots from earlier versions (2010–2014 UAP subset) are available in `
    - `proximity` (composite PK: `bf_id` + `uap_id`)
    - `kp_index` (PK: `datetime`)
 
+   ![Entity Relationship Diagram](images/anomalous_sightings_archive_erd_d7.png) 
+
 5. **Analysis**  
    SQL queries against the SQLite database to generate insights.
 
