@@ -8,7 +8,7 @@ This project investigates potential correlations between Bigfoot and UFO sightin
 1. Clone this repository.
 2. Install the required Python packages:  
    pip install -r requirements.txt
-3. Open `complete_analysis_combined.ipynb` in Jupyter Notebook or JupyterLab.
+3. Open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab.
  
 ## Example Output
 
