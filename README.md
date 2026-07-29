@@ -154,6 +154,7 @@ If you want to re-run those archived notebooks:
 - Weather API loop + checkpoints (Open-Meteo) (Grok 4)
 - Cloud cover CTE (`CASE` statement) (Grok 4)
 - Grouped bar chart of cloud cover distribution (Grok 4)
+- Ax of Contigous US Plot Map in State Population Weighted Plot Map of US UAP Sightings (Cont 48 States Only)
 
 ### Python Modules (`python/`)
 - `kp_index.py` – datetime parsing (Grok 4)
