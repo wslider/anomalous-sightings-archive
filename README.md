@@ -1,3 +1,4 @@
+```markdown
 # 🛸 Anomalous Sightings Archive 🗺️
 
 This project investigates potential correlations between Bigfoot and UFO (UAP) sightings across the United States from 1950 to 2014.  
@@ -6,30 +7,86 @@ Secondary goals include identifying shared environmental conditions (season, wea
 
 ---
 
-## How to Use
+## Quick Start
 
-1. Clone this repository  
-2. Create and activate a virtual environment:
+```bash
+git clone https://github.com/wslider/anomalous-sightings-archive.git
+cd anomalous-sightings-archive
+python -m venv .venv
+```
 
-   **macOS / Linux**
+**Activate the virtual environment**
+
+**Bash** (macOS, Linux, Git Bash on Windows, WSL)
+```bash
+# Unix-style
+source .venv/bin/activate
+
+# Windows (Git Bash / WSL)
+source .venv/Scripts/activate
+```
+
+**PowerShell** (Windows only – optional)
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+**Install the required packages** (Bash & PowerShell – same command)
+```bash
+pip install -r requirements.txt
+```
+
+Then open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab and **Run All**.
+
+> Tip for Windows users: Git Bash or WSL works exactly like Linux/macOS. You do **not** need PowerShell.  
+> Outputs are cleared for version control. Running the notebook regenerates the dataframes, SQLite database, charts, and maps (saved to `plots/`).
+
+---
+
+## How to Use (Detailed)
+
+1. Clone this repository
+
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate
+   git clone https://github.com/wslider/anomalous-sightings-archive.git
+   cd anomalous-sightings-archive
    ```
 
-   **Windows (PowerShell)**
+2. Create and activate a virtual environment in your preferred terminal:
+
+   **Bash** (macOS, Linux, Git Bash on Windows, WSL)
+   ```bash
+   python -m venv .venv
+   # Unix-style
+   source .venv/bin/activate
+   # Windows (Git Bash / WSL)
+   source .venv/Scripts/activate
+   ```
+
+   **PowerShell** (Windows only – optional)
    ```powershell
    python -m venv .venv
    .\.venv\Scripts\Activate.ps1
    ```
 
-3. Install the required packages:
+3. **Install the required packages** (Bash & PowerShell – same command)
    ```bash
    pip install -r requirements.txt
    ```
-4. Open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab and run the cells.
 
-> All key charts and maps are saved in the `plots/` directory (see below).
+4. Open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab and **Run All** cells.
+
+   The notebook will:
+   - Import libraries and Python modules (`python/`)
+   - Read the raw data (`data/raw`)
+   - Clean & enrich the data (`data/processed` → `data/final`)
+     - Notebook outputs show dataframes and the full process / logic behind decisions
+   - Create the SQLite DB (`sql/anomalous_sightings.db`)
+   - Run SQLite queries and display dataframes
+   - Generate visualizations and maps + save them to `plots/`
+
+> All key charts and maps are saved in the `plots/` directory (see below).  
+> Note: Outputs in the notebook are cleared for version control — they are recreated when you run all cells.
 
 ---
 
@@ -42,8 +99,8 @@ Key visualizations from the current analysis:
 | Histogram of temperatures at UAP & Bigfoot sightings | [`plots/bigfoot_uap_temperatures_histogram.png`](plots/bigfoot_uap_temperatures_histogram.png) |
 | Cloud cover distribution across all reports | [`plots/cloud_cover_distribution_all_reports_bar.png`](plots/cloud_cover_distribution_all_reports_bar.png) |
 | KP Index distribution (Historical vs Bigfoot vs UAP) | [`plots/kp_index_distribution_all_reports_bar_v2.png`](plots/kp_index_distribution_all_reports_bar_v2.png) |
-| Choropleth maps (sightings & proximity per million population) | `plots/` |
-| Cluster / density / proximity maps | `plots/` |
+| Cluster / density / proximity maps | [`plots/proximity_map.png`](plots/proximity_map.png) |
+| Choropleth maps (sightings & proximity per million population) | `coming soon` |
 
 Archived plots from earlier versions (2010–2014 UAP subset) are available in `plots/archive/`.
 
@@ -101,7 +158,7 @@ Archived plots from earlier versions (2010–2014 UAP subset) are available in `
    - `proximity` (composite PK: `bf_id` + `uap_id`)
    - `kp_index` (PK: `datetime`)
 
-   ![Entity Relationship Diagram](images/anomalous_sightings_archive_erd_d7.png) 
+   ![Entity Relationship Diagram](images/anomalous_sightings_archive_erd_d7.png)
 
 5. **Analysis**  
    SQL queries against the SQLite database to generate insights.
@@ -110,9 +167,14 @@ Archived plots from earlier versions (2010–2014 UAP subset) are available in `
    - Charts: Matplotlib + Seaborn  
    - Maps: GeoPandas + Folium  
 
-7. **Front-End & Stretch Goals**  
-   - Interactive Streamlit dashboard  
-   - User sighting submission form
+7. **Stretch Goals**  
+   - Choropleth maps of the contiguous United States  
+   - Individual state-level charts and maps
+
+8. **Future Plans**  
+   - Interactive front-end (Streamlit dashboard or full website)  
+   - User sighting submission form  
+   - Cloud-hosted database with ongoing updates
 
 ---
 
@@ -125,8 +187,8 @@ No API key is required.
 The weather enrichment logic lives in `python/weather_api.py`.
 
 **Current – Kp Index (GFZ)**  
-Geomagnetic Kp index data is sourced from the official [GFZ Potsdam Kp Index service](https://kp.gfz.de/).
-No API Key is required.
+Geomagnetic Kp index data is sourced from the official [GFZ Potsdam Kp Index service](https://kp.gfz.de/).  
+No API key is required.
 
 The fetching and processing logic lives in `python/kp_index.py`.
 
@@ -154,7 +216,7 @@ If you want to re-run those archived notebooks:
 - Weather API loop + checkpoints (Open-Meteo) (Grok 4)
 - Cloud cover CTE (`CASE` statement) (Grok 4)
 - Grouped bar chart of cloud cover distribution (Grok 4)
-- Ax of Contigous US Plot Map in State Population Weighted Plot Map of US UAP Sightings (Cont 48 States Only)
+- Axis of Contiguous US Plot Map in State Population Weighted Plot Map of US UAP Sightings (Contiguous 48 States Only)
 
 ### Python Modules (`python/`)
 - `kp_index.py` – datetime parsing (Grok 4)
@@ -163,12 +225,11 @@ If you want to re-run those archived notebooks:
 
 ### README.md
 - Example Output Section with Links to Plots (Grok 4)
-- Typo and Spellchecking (Grok 4)
+- Typo / Spellchecking & Final Polish (Grok 4)
 
 ---
 
 ## Author
-
 **William Slider** – Data Analyst
 
 ---
@@ -176,3 +237,4 @@ If you want to re-run those archived notebooks:
 ## License
 
 MIT License
+```
