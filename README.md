@@ -1,4 +1,3 @@
-```markdown
 # 🛸 Anomalous Sightings Archive 🗺️
 
 This project investigates potential correlations between Bigfoot and UFO (UAP) sightings across the United States from 1950 to 2014.  
@@ -237,4 +236,3 @@ If you want to re-run those archived notebooks:
 ## License
 
 MIT License
-```
