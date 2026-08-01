@@ -2,7 +2,7 @@
 
 This project investigates potential correlations between Bigfoot and UFO (UAP) sightings across the United States from 1950 to 2014.  
 The primary goal is to determine whether there is a meaningful relationship in the **time** and/or **location** of these anomalous phenomena, or if any clusters exist.  
-Secondary goals include identifying shared environmental conditions (season, weather, KP index, etc.) and providing practical insights for independent investigators.
+Secondary goals include identifying shared environmental conditions (season, weather, Kp index, etc.) and providing practical insights for independent investigators.
 
 ---
 
@@ -96,10 +96,10 @@ Key visualizations from the current analysis:
 | Visualization | File |
 |---------------|------|
 | Histogram of temperatures at UAP & Bigfoot sightings | [`plots/bigfoot_uap_temperatures_histogram.png`](plots/bigfoot_uap_temperatures_histogram.png) |
-| Bar Chart of Cloud cover distribution across all reports | [`plots/cloud_cover_distribution_all_reports_bar.png`](plots/cloud_cover_distribution_all_reports_bar.png) |
-| Bar Chart of Kp Index distribution (Historical vs Bigfoot vs UAP) | [`plots/kp_index_distribution_all_reports_bar_v2.png`](plots/kp_index_distribution_all_reports_bar_v2.png) |
-| Scatter Plot Map of Reports in Proximity Table | [`plots/proximity_map.png`](plots/proximity_map.png) |
-| Scatter Plot Map of UAP Reports - State Population Density Weighted | [`plots/contiguous_us_uap_plot_map.png`](plots/contiguous_us_uap_plot_map.png) |
+| Bar chart of cloud cover distribution across all reports | [`plots/cloud_cover_distribution_all_reports_bar.png`](plots/cloud_cover_distribution_all_reports_bar.png) |
+| Bar chart of Kp index distribution (Historical vs Bigfoot vs UAP) | [`plots/kp_index_distribution_all_reports_bar_v2.png`](plots/kp_index_distribution_all_reports_bar_v2.png) |
+| Scatter plot map of reports in proximity table | [`plots/proximity_map.png`](plots/proximity_map.png) |
+| Scatter plot map of UAP reports (state population-density weighted) | [`plots/contiguous_us_uap_plot_map.png`](plots/contiguous_us_uap_plot_map.png) |
 | Choropleth maps (sightings & proximity per million population) | `coming soon` |
 
 > Note: Archived plots from earlier versions (2010–2014 UAP subset) are available in `plots/archive/`.
@@ -130,7 +130,7 @@ Key visualizations from the current analysis:
 - **Main Notebook**: `notebooks/anomalous_sightings_analysis.ipynb`  
 - **Modular Python scripts** (`python/`):
   - Weather API integration (Open-Meteo)
-  - KP Index fetching & CSV generation
+  - Kp index fetching & CSV generation
   - Geohash generation + haversine distance
   - Proximity table computation
 
@@ -143,7 +143,7 @@ Key visualizations from the current analysis:
    Standard cleaning, normalization, and merging of the two Bigfoot datasets into `combined_bigfoot.csv`.
 
 3. **Data Enrichment** (Pandas)  
-   - Add solar KP / AP Index  
+   - Add solar Kp / Ap Index  
    - Historical weather (2010–2014 UAP) via `weather_api.py` (Open-Meteo)  
    - Create proximity table by merging on `geohash_7`  
    - Reorder columns to match the ERD
@@ -164,7 +164,7 @@ Key visualizations from the current analysis:
    SQL queries against the SQLite database to generate insights.
 
 6. **Visualizations**
-   - located in `plots/`
+   - Located in `plots/`
    - Charts: Matplotlib + Seaborn  
    - Maps: GeoPandas + Folium  
 
@@ -217,7 +217,7 @@ If you want to re-run those archived notebooks:
 - Weather API loop + checkpoints (Open-Meteo) (Grok 4)
 - Cloud cover CTE (`CASE` statement) (Grok 4)
 - Grouped bar chart of cloud cover distribution (Grok 4)
-- Axis of Contiguous US Plot Map in State Population Weighted Plot Map of US UAP Sightings (Contiguous 48 States Only)
+- Axis formatting for Contiguous US population-weighted UAP map (Contiguous 48 States Only)
 
 ### Python Modules (`python/`)
 - `kp_index.py` – datetime parsing (Grok 4)
@@ -225,8 +225,36 @@ If you want to re-run those archived notebooks:
 - `weather_api.py` – error handling + vectorized weather condition classification (Grok 4)
 
 ### README.md
-- Example Output Section with Links to Plots (Grok 4)
-- Typo / Spellchecking & Final Polish (Grok 4)
+- Example Output section with links to plots (Grok 4)
+- Typo / spellchecking & final polish (Grok 4)
+
+---
+
+## Findings & Conclusion  
+
+### Proximity of UAP and Bigfoot Reports
+![Proximity Scatterplot Map](plots/proximity_map.png)
+
+Geographic clusters of reports in close proximity appear in several regions:
+- **Pacific Northwest** (strongest concentration)
+- Ohio Valley
+- Central Arkansas
+- Florida
+
+### Location
+- Bigfoot reports are concentrated in forested regions of the United States, particularly along the West Coast and in the Eastern U.S. There is a notable absence of reports across the Central Plains and desert regions of the Western U.S.
+- UAP reports are more evenly distributed nationwide but still show notable clusters in the Pacific Northwest and in states such as Montana and Vermont.
+
+### Timing
+- UAP sightings peak between approximately 9:00 p.m. and 10:00 p.m.
+- Both Bigfoot and UAP reports peak during the summer and early fall months (roughly June–November).
+
+### Environmental Conditions
+- **Cloud cover**: A large share of UAP reports occur under clear skies (0–10% cloud cover). Bigfoot reports show a more even distribution across cloud-cover ranges.
+- **Temperature**: Average temperatures at the time of both types of reports are similar, though Bigfoot reports trend slightly cooler (≈56.8 °F vs. ≈60.1 °F for UAP).
+- **Kp index**: Both Bigfoot and UAP reports show a higher proportion of events during quiet geomagnetic conditions (Kp 0–1) relative to the historical baseline.
+
+These patterns are observational and do not by themselves establish a causal relationship between the two phenomena. They do, however, highlight regions and conditions that may be of practical interest to independent investigators.
 
 ---
 
