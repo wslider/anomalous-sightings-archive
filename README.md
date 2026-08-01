@@ -96,12 +96,13 @@ Key visualizations from the current analysis:
 | Visualization | File |
 |---------------|------|
 | Histogram of temperatures at UAP & Bigfoot sightings | [`plots/bigfoot_uap_temperatures_histogram.png`](plots/bigfoot_uap_temperatures_histogram.png) |
-| Cloud cover distribution across all reports | [`plots/cloud_cover_distribution_all_reports_bar.png`](plots/cloud_cover_distribution_all_reports_bar.png) |
-| KP Index distribution (Historical vs Bigfoot vs UAP) | [`plots/kp_index_distribution_all_reports_bar_v2.png`](plots/kp_index_distribution_all_reports_bar_v2.png) |
-| Cluster / density / proximity maps | [`plots/proximity_map.png`](plots/proximity_map.png) |
+| Bar Chart of Cloud cover distribution across all reports | [`plots/cloud_cover_distribution_all_reports_bar.png`](plots/cloud_cover_distribution_all_reports_bar.png) |
+| Bar Chart of Kp Index distribution (Historical vs Bigfoot vs UAP) | [`plots/kp_index_distribution_all_reports_bar_v2.png`](plots/kp_index_distribution_all_reports_bar_v2.png) |
+| Scatter Plot Map of Reports in Proximity Table | [`plots/proximity_map.png`](plots/proximity_map.png) |
+| Scatter Plot Map of UAP Reports - State Population Density Weighted | [`plots/contiguous_us_uap_plot_map.png`](plots/contiguous_us_uap_plot_map.png) |
 | Choropleth maps (sightings & proximity per million population) | `coming soon` |
 
-Archived plots from earlier versions (2010–2014 UAP subset) are available in `plots/archive/`.
+> Note: Archived plots from earlier versions (2010–2014 UAP subset) are available in `plots/archive/`.
 
 ---
 
@@ -162,7 +163,8 @@ Archived plots from earlier versions (2010–2014 UAP subset) are available in `
 5. **Analysis**  
    SQL queries against the SQLite database to generate insights.
 
-6. **Visualizations**  
+6. **Visualizations**
+   - located in `plots/`
    - Charts: Matplotlib + Seaborn  
    - Maps: GeoPandas + Folium  
 
