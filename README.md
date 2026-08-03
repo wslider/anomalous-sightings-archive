@@ -25,12 +25,12 @@ source .venv/bin/activate
 source .venv/Scripts/activate
 ```
 
-**PowerShell** (Windows only – optional)
+**PowerShell** (Windows only - optional)
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-**Install the required packages** (Bash & PowerShell – same command)
+**Install the required packages** (Bash & PowerShell - same command)
 ```bash
 pip install -r requirements.txt
 ```
@@ -62,13 +62,13 @@ Then open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or 
    source .venv/Scripts/activate
    ```
 
-   **PowerShell** (Windows only – optional)
+   **PowerShell** (Windows only - optional)
    ```powershell
    python -m venv .venv
    .\.venv\Scripts\Activate.ps1
    ```
 
-3. **Install the required packages** (Bash & PowerShell – same command)
+3. **Install the required packages** (Bash & PowerShell - same command)
    ```bash
    pip install -r requirements.txt
    ```
@@ -102,19 +102,19 @@ Key visualizations from the current analysis:
 | Scatter plot map of UAP reports (state population-density weighted) | [`plots/contiguous_us_uap_plot_map.png`](plots/contiguous_us_uap_plot_map.png) |
 | Choropleth maps (sightings & proximity per million population) | `coming soon` |
 
-> Note: Archived plots from earlier versions (2010–2014 UAP subset) are available in `plots/archive/`.
+> Note: Archived plots from earlier versions (2010-2014 UAP subset) are available in `plots/archive/`.
 
 ---
 
 ## Data Sources
 
 ### Original / Raw Data
-- **UAP / UFO reports**: `data/raw/uap_original_dataset.csv` (NUFORC, originally from Kaggle – currently unavailable)
-- **US population by state**: [Kaggle – US Population by State](https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data)
+- **UAP / UFO reports**: `data/raw/uap_original_dataset.csv` (NUFORC, originally from Kaggle - currently unavailable)
+- **US population by state**: [Kaggle - US Population by State](https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data)
 - **Bigfoot reports**: [BFRO Database on Kaggle](https://www.kaggle.com/datasets/thedevastator/unlocking-mysteries-of-bigfoot-through-sightings?select=bfro_reports.csv)
 
 ### Processed Data (created by this project)
-- **Kp Index (Geomagnetic Activity)**: [GFZ Potsdam – Kp Index](https://kp.gfz.de/)
+- **Kp Index (Geomagnetic Activity)**: [GFZ Potsdam - Kp Index](https://kp.gfz.de/)
   - Used to create `data/processed/kp_index.csv`
 - **US UAP + weather (2011)**: `data/processed/sighting_with_weather_v2.csv`
   - Created via Open-Meteo API weather enrichment of 2011 US UAP sightings only
@@ -144,7 +144,7 @@ Key visualizations from the current analysis:
 
 3. **Data Enrichment** (Pandas)  
    - Add solar Kp / Ap Index  
-   - Historical weather (2010–2014 UAP) via `weather_api.py` (Open-Meteo)  
+   - Historical weather (2010-2014 UAP) via `weather_api.py` (Open-Meteo)  
    - Create proximity table by merging on `geohash_7`  
    - Reorder columns to match the ERD
 
@@ -181,19 +181,19 @@ Key visualizations from the current analysis:
 
 ## API Use
 
-**Current – Open-Meteo**  
+**Current - Open-Meteo**  
 This project uses the free [Open-Meteo](https://open-meteo.com/) Historical Weather API.  
 No API key is required.
 
 The weather enrichment logic lives in `python/weather_api.py`.
 
-**Current – Kp Index (GFZ)**  
+**Current - Kp Index (GFZ)**  
 Geomagnetic Kp index data is sourced from the official [GFZ Potsdam Kp Index service](https://kp.gfz.de/).  
 No API key is required.
 
 The fetching and processing logic lives in `python/kp_index.py`.
 
-**Legacy (Previous Version – Not Required)**  
+**Legacy (Previous Version - Not Required)**  
 Older notebooks used WeatherAPI.com.  
 If you want to re-run those archived notebooks:
 1. Get a free key at [https://www.weatherapi.com/](https://www.weatherapi.com/)
@@ -207,7 +207,7 @@ If you want to re-run those archived notebooks:
 ## AI Assistance
 
 ### Archived Notebooks (`notebooks/archive/`)
-- Weather API request parsing for 2010–2014 UAP data (Grok 4)
+- Weather API request parsing for 2010-2014 UAP data (Grok 4)
 - UAP state choropleth map creation (Grok 4)
 
 ### Main Notebook (`notebooks/anomalous_sightings_analysis.ipynb`)
@@ -220,9 +220,9 @@ If you want to re-run those archived notebooks:
 - Axis formatting for Contiguous US population-weighted UAP map (Contiguous 48 States Only)
 
 ### Python Modules (`python/`)
-- `kp_index.py` – datetime parsing (Grok 4)
-- `geo_location.py` – `create_geohashes` + `haversine_distance` (Grok 4)
-- `weather_api.py` – error handling + vectorized weather condition classification (Grok 4)
+- `kp_index.py` - datetime parsing (Grok 4)
+- `geo_location.py` - `create_geohashes` + `haversine_distance` (Grok 4)
+- `weather_api.py` - error handling + vectorized weather condition classification (Grok 4)
 
 ### README.md
 - Example Output section with links to plots (Grok 4)
@@ -247,19 +247,19 @@ Geographic clusters of reports in close proximity appear in several regions:
 
 ### Timing
 - UAP sightings peak between approximately 9:00 p.m. and 10:00 p.m.
-- Both Bigfoot and UAP reports peak during the summer and early fall months (roughly June–November).
+- Both Bigfoot and UAP reports peak during the summer and early fall months (roughly June-November).
 
 ### Environmental Conditions
-- **Cloud cover**: A large share of UAP reports occur under clear skies (0–10% cloud cover). Bigfoot reports show a more even distribution across cloud-cover ranges.
+- **Cloud cover**: A large share of UAP reports occur under clear skies (0-10% cloud cover). Bigfoot reports show a more even distribution across cloud-cover ranges.
 - **Temperature**: Average temperatures at the time of both types of reports are similar, though Bigfoot reports trend slightly cooler (≈56.8 °F vs. ≈60.1 °F for UAP).
-- **Kp index**: Both Bigfoot and UAP reports show a higher proportion of events during quiet geomagnetic conditions (Kp 0–1) relative to the historical baseline.
+- **Kp index**: Both Bigfoot and UAP reports show a higher proportion of events during quiet geomagnetic conditions (Kp 0-1) relative to the historical baseline.
 
 These patterns are observational and do not by themselves establish a causal relationship between the two phenomena. They do, however, highlight regions and conditions that may be of practical interest to independent investigators.
 
 ---
 
 ## Author
-**William Slider** – Data Analyst
+**William Slider** - Data Analyst
 
 ---
 
