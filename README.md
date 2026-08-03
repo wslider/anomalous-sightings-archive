@@ -8,6 +8,9 @@ Secondary goals include identifying shared environmental conditions (season, wea
 
 ## Quick Start
 
+**Clone Repository and create the virtual environment**
+
+**Bash** (macOS, Linux, Git Bash on Windows, WSL)
 ```bash
 git clone https://github.com/wslider/anomalous-sightings-archive.git
 cd anomalous-sightings-archive
@@ -35,7 +38,7 @@ source .venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
-Then open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab and **Run All**.
+Then open `notebooks/anomalous_sightings_analysis.ipynb` in VS Code, Jupyter Notebook or JupyterLab and **Run All**.
 
 > Tip for Windows users: Git Bash or WSL works exactly like Linux/macOS. You do **not** need PowerShell.  
 > Outputs are cleared for version control. Running the notebook regenerates the dataframes, SQLite database, charts, and maps (saved to `plots/`).
@@ -46,6 +49,7 @@ Then open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or 
 
 1. Clone this repository
 
+   **Bash** (macOS, Linux, Git Bash on Windows, WSL)
    ```bash
    git clone https://github.com/wslider/anomalous-sightings-archive.git
    cd anomalous-sightings-archive
@@ -73,9 +77,9 @@ Then open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or 
    pip install -r requirements.txt
    ```
 
-4. Open `notebooks/anomalous_sightings_analysis.ipynb` in Jupyter Notebook or JupyterLab and **Run All** cells.
+4. Open `notebooks/anomalous_sightings_analysis.ipynb` in VS Code, Jupyter Notebook or JupyterLab and **Run All** cells.
 
-   The notebook will:
+   The notebook will do it all:
    - Import libraries and Python modules (`python/`)
    - Read the raw data (`data/raw`)
    - Clean & enrich the data (`data/processed` → `data/final`)
@@ -109,15 +113,19 @@ Key visualizations from the current analysis:
 ## Data Sources
 
 ### Original / Raw Data
-- **UAP / UFO reports**: `data/raw/uap_original_dataset.csv` (NUFORC, originally from Kaggle - currently unavailable)
-- **US population by state**: [Kaggle - US Population by State](https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data)
+- **UAP / UFO reports**: `data/raw/uap_original_dataset.csv` (NUFORC data, originally from Kaggle - currently unavailable)
+   - [NUFORC - National UFO Reporting Center](https://nuforc.org/)
+- **US population by state**: [Kaggle - US Population by State (from US Census)](https://www.kaggle.com/datasets/rolfhendriks/us-population-by-state-comprehensive-data)
+   - [US Census Data](https://www.census.gov/)
 - **Bigfoot reports**: [BFRO Database on Kaggle](https://www.kaggle.com/datasets/thedevastator/unlocking-mysteries-of-bigfoot-through-sightings?select=bfro_reports.csv)
+   - [BFRO - Bigfoot Research Organization](https://www.bfro.net/gdb/)
 
 ### Processed Data (created by this project)
 - **Kp Index (Geomagnetic Activity)**: [GFZ Potsdam - Kp Index](https://kp.gfz.de/)
   - Used to create `data/processed/kp_index.csv`
 - **US UAP + weather (2011)**: `data/processed/sighting_with_weather_v2.csv`
   - Created via Open-Meteo API weather enrichment of 2011 US UAP sightings only
+  - [Open Meteo API](https://open-meteo.com/en/docs)
 
 ---
 
@@ -137,18 +145,26 @@ Key visualizations from the current analysis:
 ### Step-by-step Process
 
 1. **Data Ingestion**  
-   Load Bigfoot (BFRO), UAP (NUFORC), US Census population data, and generate `kp_index.csv`.
+   - Load Bigfoot (BFRO) CSVs, UAP (NUFORC) CSVs, US Census population data CSVs, and generate `kp_index.csv`.
 
 2. **Data Cleaning** (Pandas)  
-   Standard cleaning, normalization, and merging of the two Bigfoot datasets into `combined_bigfoot.csv`.
+   - Standard cleaning, normalization of all datasets. 
+      - UAP Data - create dataframe to include US data only 
+      - Merging of the two Bigfoot datasets into `combined_bigfoot.csv`.
+      - Create seperate dataset for Bigfoot Weather
 
-3. **Data Enrichment** (Pandas)  
+3. **Data Enrichment** (Pandas and Python Modules)  
    - Add solar Kp / Ap Index  
-   - Historical weather (2010-2014 UAP) via `weather_api.py` (Open-Meteo)  
-   - Create proximity table by merging on `geohash_7`  
-   - Reorder columns to match the ERD
+   - Historical weather (Sample All 2011 UAP Reports ONLY) via `weather_api.py` (Open-Meteo)  
+   - Create proximity table
+      - Merge Bigfoot and UAP reports on `geohash_6`
+      - Enrich with time difference, distance between reports `python/geo_location.py`  
+   - Final Prep for Relational Database Creation 
+      - Reorder columns to match the ERD
+   - Write Final Datasets to `data/final/`
 
-4. **Relational Database** (SQLite)  
+4. **Relational Database** (SQLite)
+   - Use Data in `data/final/`
    Tables:
    - `bigfoot_reports` (PK: `bf_id`)
    - `bigfoot_weather`
@@ -177,6 +193,8 @@ Key visualizations from the current analysis:
    - User sighting submission form  
    - Cloud-hosted database with ongoing updates
 
+> Note: Relative File Paths are Used Inside The Notebook (Example: data/final → ../data/final/)
+
 ---
 
 ## API Use
@@ -193,7 +211,7 @@ No API key is required.
 
 The fetching and processing logic lives in `python/kp_index.py`.
 
-**Legacy (Previous Version - Not Required)**  
+**Legacy (Previous Version)**  
 Older notebooks used WeatherAPI.com.  
 If you want to re-run those archived notebooks:
 1. Get a free key at [https://www.weatherapi.com/](https://www.weatherapi.com/)
@@ -237,6 +255,7 @@ If you want to re-run those archived notebooks:
 
 Geographic clusters of reports in close proximity appear in several regions:
 - **Pacific Northwest** (strongest concentration)
+- Northern California
 - Ohio Valley
 - Central Arkansas
 - Florida
