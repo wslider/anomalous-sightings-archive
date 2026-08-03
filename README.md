@@ -211,14 +211,15 @@ No API key is required.
 
 The fetching and processing logic lives in `python/kp_index.py`.
 
-**Legacy (Previous Version)**  
-Older notebooks used WeatherAPI.com.  
-If you want to re-run those archived notebooks:
+
+**Legacy (Previous Inactive Version)**    
+> Note: Older notebooks used WeatherAPI.com - which requires an API Key
 1. Get a free key at [https://www.weatherapi.com/](https://www.weatherapi.com/)
 2. Store it in a `.env` file:
    ```
    WX_API_KEY=your_key_here
    ```
+> Note: API section is commented out in notebooks/archive/us_uap_2010_2014_with_weather_analysis_v1.ipynb 
 
 ---
 
