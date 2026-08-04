@@ -104,6 +104,7 @@ Key visualizations from the current analysis:
 | Bar chart of Kp index distribution (Historical vs Bigfoot vs UAP) | [`plots/kp_index_distribution_all_reports_bar_v2.png`](plots/kp_index_distribution_all_reports_bar_v2.png) |
 | Scatter plot map of reports in proximity table | [`plots/proximity_map.png`](plots/proximity_map.png) |
 | Scatter plot map of UAP reports (state population-density weighted) | [`plots/contiguous_us_uap_plot_map.png`](plots/contiguous_us_uap_plot_map.png) |
+| Line chart of UAP and Bigfoot Reports Per Year (1950 - 2013) | [`plots/reports_per_year_line.png`](plots/reports_per_year_line.png) |
 | Choropleth maps (sightings & proximity per million population) | `coming soon` |
 
 > Note: Archived plots from earlier versions (2010-2014 UAP subset) are available in `plots/archive/`.
@@ -145,17 +146,18 @@ Key visualizations from the current analysis:
 ### Step-by-step Process
 
 1. **Data Ingestion**  
-   - Load Bigfoot (BFRO) CSVs, UAP (NUFORC) CSVs, US Census population data CSVs, and generate `kp_index.csv`.
+   - Load Bigfoot (BFRO) CSVs, UAP (NUFORC) CSV, US Census population data CSVs (`data/raw/`)
+   - Generate `data/processed/kp_index.csv` & `data/raw/state_area.csv`
 
 2. **Data Cleaning** (Pandas)  
    - Standard cleaning, normalization of all datasets. 
       - UAP Data - create dataframe to include US data only 
-      - Merging of the two Bigfoot datasets into `combined_bigfoot.csv`.
-      - Create seperate dataset for Bigfoot Weather
+      - Merging of the two Bigfoot datasets into `combined_bigfoot_df` → `data/processed/combined_bigfoot_v1.csv`.
+      - Create seperate dataset for Bigfoot Weather → `data/processed/bigfoot_weather_processed.csv`
 
 3. **Data Enrichment** (Pandas and Python Modules)  
    - Add solar Kp / Ap Index  
-   - Historical weather (Sample All 2011 UAP Reports ONLY) via `weather_api.py` (Open-Meteo)  
+   - Historical weather (Sample All 2011 UAP Reports ONLY) via `python/weather_api.py` (Open-Meteo)  
    - Create proximity table
       - Merge Bigfoot and UAP reports on `geohash_6`
       - Enrich with time difference, distance between reports `python/geo_location.py`  
@@ -275,6 +277,10 @@ Geographic clusters of reports in close proximity appear in several regions:
 - **Kp index**: Both Bigfoot and UAP reports show a higher proportion of events during quiet geomagnetic conditions (Kp 0-1) relative to the historical baseline.
 
 These patterns are observational and do not by themselves establish a causal relationship between the two phenomena. They do, however, highlight regions and conditions that may be of practical interest to independent investigators.
+
+### Trends
+- **UAP Reports**: The number of UAP Reports increase sigificantly starting in the mid-1990s.
+- **Bigfoot Reports**: The number of Bigfoot Reports increase gradually through the years in the dataset (1950 - 2021).  
 
 ---
 
